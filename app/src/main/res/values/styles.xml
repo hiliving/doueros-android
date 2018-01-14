@@ -1,0 +1,34 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--默认 Activity 切换动画-->
+        <item name="android:windowAnimationStyle">@style/ActivityAnimationSliding</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--Activity 切换动画  滑动切换样式-->
+    <style name="ActivityAnimationSliding">
+        <!--进入新界面时-->
+        <item name="android:activityOpenEnterAnimation">@anim/activity_open_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_open_out</item>
+
+        <!--退回旧界面时-->
+        <item name="android:activityCloseEnterAnimation">@anim/activity_close_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_close_out</item>
+    </style>
+</resources>

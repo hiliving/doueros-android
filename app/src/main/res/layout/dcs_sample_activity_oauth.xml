@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    xmlns:pv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <me.wangyuwei.particleview.ParticleView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/startAnim"
+        pv:pv_background_color="#ffffff"
+        pv:pv_host_text="大喵智能语音"
+        pv:pv_host_text_size="20sp"
+        pv:pv_particle_text="v1.0"
+        pv:pv_particle_text_size="16sp"
+        pv:pv_text_color="#434343"
+        pv:pv_text_anim_time="1000"
+        pv:pv_spread_anim_time="800"
+        pv:pv_host_text_anim_time="1000" />
+
+
+</RelativeLayout>
