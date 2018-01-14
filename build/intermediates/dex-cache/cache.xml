@@ -2,6 +2,15 @@
 <items version="2" >
 
     <item
+        is-multidex="false"
+        jar="F:\github\doueros\app\libs\commons-lang3-3.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\commons-lang3-3.4_2cf13a87c9f948d8bd3ecdef16dd4592857ac2fe.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="F:\github\doueros\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
@@ -11,13 +20,13 @@
         <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_3d851eef00aca1224e5f46f13d02d815514d3353\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\galaxy-lite-2.0.0.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="F:\github\doueros\app\libs\jackson-core-asl-1.9.13.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="a869df63042b91ed9ea028c5824f4a899cf3f6c4">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\galaxy-lite-2.0.0_32729c2db8809672e3b78ebc924c941cdd0423eb\classes.dex" />
+        sha1="3c304d70f42f832e0a86d45bd437f692129299a4">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\jackson-core-asl-1.9.13_11d8e5b8a3e836f6c7640c130a4af8abfa8ef92c.jar" />
     </item>
     <item
         is-multidex="true"
@@ -27,141 +36,6 @@
         revision="25.0.2"
         sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
         <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-lang3-3.4_2cf13a87c9f948d8bd3ecdef16dd4592857ac2fe\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\jackson-core-asl-1.9.13.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3c304d70f42f832e0a86d45bd437f692129299a4">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\jackson-core-asl-1.9.13_ee82f43e6a8375609584440950d380ec90b91403.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\okio-1.14.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="200b77a80c5daf0662db9bacb1eaef9eaec57742">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\okio-1.14.0_bae0bb4e2b5d58be63207ab1799c01927680da60.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\jackson-core-asl-1.9.13.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3c304d70f42f832e0a86d45bd437f692129299a4">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\jackson-core-asl-1.9.13_ee82f43e6a8375609584440950d380ec90b91403\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\doueros\app\libs\jackson-mapper-asl-1.9.13.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1ee2f2bed0e5dd29d1cb155a166e6f8d50bbddb7">
-        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\jackson-mapper-asl-1.9.13_90fe466d3a8badbdeef8328235de6dc6de669ca2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\commons-io-2.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b24f6678d458e65f08113a079e3724581eca1184">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-io-2.5_88393d5e3cbeeb54a2269a25704c8048cad26d7d\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\commons-io-2.5.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b24f6678d458e65f08113a079e3724581eca1184">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\commons-io-2.5_88393d5e3cbeeb54a2269a25704c8048cad26d7d.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\okio-1.14.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="200b77a80c5daf0662db9bacb1eaef9eaec57742">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\okio-1.14.0_bae0bb4e2b5d58be63207ab1799c01927680da60\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\doueros\app\libs\commons-io-2.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b24f6678d458e65f08113a079e3724581eca1184">
-        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-io-2.5_d8a8420897a196b710f0c14a2d7b3aeddd2a2af6\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\galaxy-lite-2.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a869df63042b91ed9ea028c5824f4a899cf3f6c4">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\galaxy-lite-2.0.0_32729c2db8809672e3b78ebc924c941cdd0423eb.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\doueros\app\libs\commons-fileupload-1.3.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5d7491ed6ebd02b6a8d2305f8e6b7fe5dbd95f72">
-        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-fileupload-1.3.2_81a36e15469e4c65efff26a379942f2063f8ed1c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_6c72bb07a5b51b846b9dc932e3c6049e4b51c6ef\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\doueros\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="af33772aec754d02bb8a18dad59cd39c4f5a97ef">
-        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_1c06f3f464fcce040763ae9c06abce8e1c7fd01c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\doueros\app\libs\okio-1.14.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="200b77a80c5daf0662db9bacb1eaef9eaec57742">
-        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\okio-1.14.0_37f9589eb93f867aed668ad1abdb8918de206400\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\commons-lang3-3.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-lang3-3.4_d21d26a72f5c4e2953853d421dfcf8eb563a9cdc\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\commons-lang3-3.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="5fe28b9518e58819180a43a850fbc0dd24b7c050">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\commons-lang3-3.4_d21d26a72f5c4e2953853d421dfcf8eb563a9cdc.jar" />
     </item>
     <item
         is-multidex="true"
@@ -182,49 +56,85 @@
         <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\jsoup-1.11.2_13cdfe09cc52836600067bd8387f9f593545cea3\classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="F:\github\doueros\app\libs\okhttp-3.8.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c13566db4ad86aea471a56b0ba4c5204289dcd4a">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\okhttp-3.8.1_abbd693e0414bc18a14de91bfee8ae402c0a0989.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\github\doueros\app\libs\commons-io-2.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b24f6678d458e65f08113a079e3724581eca1184">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\commons-io-2.5_d8a8420897a196b710f0c14a2d7b3aeddd2a2af6.jar" />
+    </item>
+    <item
         is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\jackson-mapper-asl-1.9.13.jar"
+        jar="F:\github\doueros\app\libs\jackson-mapper-asl-1.9.13.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="1ee2f2bed0e5dd29d1cb155a166e6f8d50bbddb7">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\jackson-mapper-asl-1.9.13_b01a2a147fea29924496a4055fbdf6033e1f0231\classes.dex" />
+        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\jackson-mapper-asl-1.9.13_90fe466d3a8badbdeef8328235de6dc6de669ca2\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\jackson-mapper-asl-1.9.13.jar"
+        jar="F:\github\doueros\app\libs\jsoup-1.11.2.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="1ee2f2bed0e5dd29d1cb155a166e6f8d50bbddb7">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\jackson-mapper-asl-1.9.13_b01a2a147fea29924496a4055fbdf6033e1f0231.jar" />
+        sha1="96b3cef0a864a192fc3c8b97bbe922575ef5f432">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\jsoup-1.11.2_13cdfe09cc52836600067bd8387f9f593545cea3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="F:\github\doueros\app\libs\commons-fileupload-1.3.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5d7491ed6ebd02b6a8d2305f8e6b7fe5dbd95f72">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\commons-fileupload-1.3.2_81a36e15469e4c65efff26a379942f2063f8ed1c.jar" />
     </item>
     <item
         is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\commons-fileupload-1.3.2.jar"
+        jar="F:\github\doueros\app\libs\commons-io-2.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b24f6678d458e65f08113a079e3724581eca1184">
+        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-io-2.5_d8a8420897a196b710f0c14a2d7b3aeddd2a2af6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\github\doueros\app\libs\commons-fileupload-1.3.2.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="5d7491ed6ebd02b6a8d2305f8e6b7fe5dbd95f72">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-fileupload-1.3.2_8efcf977388ac0e9c46918e40ba6aeb737569fd0\classes.dex" />
+        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\commons-fileupload-1.3.2_81a36e15469e4c65efff26a379942f2063f8ed1c\classes.dex" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Helloworld\.android\build-cache\72e6a85ed0d11c108deb232bba4d179434ceebb0\output\jars\classes.jar"
+        jar="F:\github\doueros\app\libs\galaxy-lite-2.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="5a7cf2a41aedccc427107ebb37762a5e2f5be590">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\classes_db4f2253617b4fb33c9716eb9731484e0a768b48.jar" />
+        sha1="a869df63042b91ed9ea028c5824f4a899cf3f6c4">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\galaxy-lite-2.0.0_7c0815defbce35ba18c7a7bc2351a9fa5a76cc1b.jar" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Helloworld\.android\build-cache\72e6a85ed0d11c108deb232bba4d179434ceebb0\output\jars\classes.jar"
+        jar="F:\github\doueros\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="5a7cf2a41aedccc427107ebb37762a5e2f5be590">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_db4f2253617b4fb33c9716eb9731484e0a768b48\classes.dex" />
+        sha1="67270c2ac13e9c5cf5d55af69ddd546ecee723b6">
+        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_1c06f3f464fcce040763ae9c06abce8e1c7fd01c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -236,40 +146,31 @@
         <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\galaxy-lite-2.0.0_7c0815defbce35ba18c7a7bc2351a9fa5a76cc1b\classes.dex" />
     </item>
     <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\jsoup-1.11.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="96b3cef0a864a192fc3c8b97bbe922575ef5f432">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\jsoup-1.11.2_13a08cb6c6f1aed270c091ed069eb82b5acb66d6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\okhttp-3.8.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="c13566db4ad86aea471a56b0ba4c5204289dcd4a">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\2\okhttp-3.8.1_22fe9aed82e0f4d77291457998e855d1633f4458\classes.dex" />
-    </item>
-    <item
         is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\okhttp-3.8.1.jar"
+        jar="F:\github\doueros\app\libs\okio-1.14.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="c13566db4ad86aea471a56b0ba4c5204289dcd4a">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\okhttp-3.8.1_22fe9aed82e0f4d77291457998e855d1633f4458.jar" />
+        sha1="200b77a80c5daf0662db9bacb1eaef9eaec57742">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\okio-1.14.0_37f9589eb93f867aed668ad1abdb8918de206400.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="F:\github\duos\dcs-sdk-java\app\libs\commons-fileupload-1.3.2.jar"
+        jar="F:\github\doueros\app\libs\jackson-mapper-asl-1.9.13.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="5d7491ed6ebd02b6a8d2305f8e6b7fe5dbd95f72">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\commons-fileupload-1.3.2_8efcf977388ac0e9c46918e40ba6aeb737569fd0.jar" />
+        sha1="1ee2f2bed0e5dd29d1cb155a166e6f8d50bbddb7">
+        <dex dex="F:\github\doueros\app\build\intermediates\pre-dexed\release\jackson-mapper-asl-1.9.13_90fe466d3a8badbdeef8328235de6dc6de669ca2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\github\doueros\app\libs\okio-1.14.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="200b77a80c5daf0662db9bacb1eaef9eaec57742">
+        <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\okio-1.14.0_37f9589eb93f867aed668ad1abdb8918de206400\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -279,33 +180,6 @@
         revision="25.0.2"
         sha1="c13566db4ad86aea471a56b0ba4c5204289dcd4a">
         <dex dex="F:\github\doueros\app\build\intermediates\transforms\dex\debug\folders\1000\2\okhttp-3.8.1_abbd693e0414bc18a14de91bfee8ae402c0a0989\classes.dex" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Helloworld\.android\build-cache\e715d7a3f9e599594f31c61f01f995facacbbaba\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d8cef207fe3523818f332926c75686e1e9e373fa">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\pre-dexed\release\classes_b06478e8783cf117d7b7c8ae68ebaaee00f28f6d.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\github\duos\dcs-sdk-java\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="556e99518fea00a6fc6523b58d62e14a3dcadfad">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6fcaf015897e842f02b387f7722483834ac6d864\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Helloworld\.android\build-cache\e715d7a3f9e599594f31c61f01f995facacbbaba\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d8cef207fe3523818f332926c75686e1e9e373fa">
-        <dex dex="F:\github\duos\dcs-sdk-java\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b06478e8783cf117d7b7c8ae68ebaaee00f28f6d\classes.dex" />
     </item>
 
 </items>

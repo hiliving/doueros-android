@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="ParticleView-1.0.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/e715d7a3f9e599594f31c61f01f995facacbbaba/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/e715d7a3f9e599594f31c61f01f995facacbbaba/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.wangyuwei/ParticleView/1.0.4/ff63694ab42592eabb69cdefc09b0995b84b21b4/ParticleView-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

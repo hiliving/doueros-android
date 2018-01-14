@@ -11,6 +11,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -26,6 +30,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -131,6 +138,9 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
     private ImageView stoppic;
     private ObjectAnimator nope;
     private ObjectAnimator tada;
+    private ImageView cImage;
+    private RelativeLayout cirImage;
+    private RotateAnimation animation;
 
     @Nullable
     @Override
@@ -166,6 +176,12 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
         rightTime = (TextView) view.findViewById(R.id.rightTime);
         seekBar = (SeekBar) view.findViewById(R.id.seekBar);
         controlseek = (RelativeLayout) view.findViewById(R.id.controlSeek);
+        //中心view
+        cImage = (ImageView) view.findViewById(R.id.cImage);
+        cirImage = (RelativeLayout) view.findViewById(R.id.cirImage);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.cimage);
+        Bitmap roundedCornerBitmap = GetRoundedCornerBitmap(bitmap);
+        cImage.setImageBitmap(roundedCornerBitmap);
         seekBar.setMax(100);
         user = (Button) view.findViewById(R.id.user);
         share = (Button) view.findViewById(R.id.share);
@@ -256,6 +272,44 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
         stoppic.setOnClickListener(this);
         BlurUtil.setViewBg(getContext(),15,5,root,R.mipmap.userbg);
         initWakeUp();
+        initAnimation();
+    }
+
+    private void initAnimation() {
+        animation = new RotateAnimation(0,359, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        animation.setRepeatMode(Animation.INFINITE);
+        animation.setRepeatCount(-1);
+        animation.setInterpolator(new LinearInterpolator()); // 设置插入器
+        animation.setDuration(10000);
+        cImage.startAnimation(animation);
+        animation.cancel();
+    }
+
+    public static Bitmap GetRoundedCornerBitmap(Bitmap bitmap) {
+        try {
+            Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                    bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(output);
+            final Paint paint = new Paint();
+            final Rect rect = new Rect(0, 0, bitmap.getWidth(),
+                    bitmap.getHeight());
+            final RectF rectF = new RectF(new Rect(0, 0, bitmap.getWidth(),
+                    bitmap.getHeight()));
+            final float roundPx = 204;
+            paint.setAntiAlias(true);
+            canvas.drawARGB(0, 0, 0, 0);
+            paint.setColor(Color.BLACK);
+            canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+            paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+
+            final Rect src = new Rect(0, 0, bitmap.getWidth(),
+                    bitmap.getHeight());
+
+            canvas.drawBitmap(bitmap, src, rect, paint);
+            return output;
+        } catch (Exception e) {
+            return bitmap;
+        }
     }
     private void initWakeUp() {
         mediaPlayer = new MediaPlayer();
@@ -355,8 +409,8 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                         super.onPaused();
                         // pauseOrPlayButton.setText(getResources().getString(R.string.audio_paused));
                         pauseOrPlayButton.setBackgroundResource(R.drawable.playbg);
-
                         isPause = true;
+                        animation.cancel();
                     }
 
                     @Override
@@ -369,6 +423,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                             controlseek.setVisibility(View.VISIBLE);
                             control.setVisibility(View.VISIBLE);
                         }
+                        animation.start();
                     }
 
                     @Override
@@ -377,6 +432,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                         // pauseOrPlayButton.setText(getResources().getString(R.string.audio_default));
                         isPause = false;
                         seekBar.setProgress(100);
+                        animation.cancel();
                     }
 
                     @Override
@@ -384,6 +440,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                         super.onStopped();
                         // pauseOrPlayButton.setText(getResources().getString(R.string.audio_default));
                         isPause = true;
+                        animation.cancel();
                     }
 
                     @Override
@@ -419,6 +476,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                         super.onRelease();
                         control.setVisibility(View.INVISIBLE);
                         controlseek.setVisibility(View.INVISIBLE);
+                        animation.cancel();
                     }
 
                     @Override
@@ -574,7 +632,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case R.id.share:
-                ShareUtil.share(getContext(),"");
+                ShareUtil.share(getContext(),"发现一个很好玩的APP，下载地址：https://github.com/hiliving/doueros-android/raw/master/images/app-release.apk");
                 break;
             case R.id.alarmpic:
                 if (nope!=null&&nope.isRunning()){
