@@ -159,8 +159,9 @@ public interface IMediaPlayer {
 
         /**
          * 播放器准备完成后回调
+         * @param url
          */
-        void onPrepared();
+        void onPrepared(String url);
 
         /**
          * 播放器销毁后回调
@@ -208,8 +209,8 @@ public interface IMediaPlayer {
 
         /**
          * 当前音频文件流的总时长
+         *  @param milliseconds 毫秒数
          *
-         * @param milliseconds 毫秒数
          */
         void onDuration(long milliseconds);
 
@@ -226,6 +227,8 @@ public interface IMediaPlayer {
          * @param millis
          */
         void onUpdateMills(long millis);
+
+        void onPrepared();
     }
 
     /**
@@ -262,7 +265,7 @@ public interface IMediaPlayer {
         }
 
         @Override
-        public void onPrepared() {
+        public void onPrepared(String url) {
 
         }
 
@@ -323,6 +326,11 @@ public interface IMediaPlayer {
 
         @Override
         public void onUpdateMills(long millis) {
+
+        }
+
+        @Override
+        public void onPrepared() {
 
         }
     }

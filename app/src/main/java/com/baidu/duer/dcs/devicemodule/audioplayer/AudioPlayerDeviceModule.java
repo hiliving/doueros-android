@@ -63,6 +63,7 @@ public class AudioPlayerDeviceModule extends BaseDeviceModule {
     // 回调接口
     private List<IMediaPlayer.IMediaPlayerListener> audioPlayerListeners;
     private long mStoppedOffsetInMilliseconds = 0;
+    private String url;
 
     public AudioPlayerDeviceModule(IMediaPlayer mediaPlayer,
                                    IMessageSender messageSender) {
@@ -182,7 +183,7 @@ public class AudioPlayerDeviceModule extends BaseDeviceModule {
             return;
         }
         latestStreamToken = currentStream.token;
-        String url = currentStream.url;
+        url = currentStream.url;
         // 从哪个位置开始播放
         long offset = currentStream.offsetInMilliseconds;
         // 判断是否是流类型还是URL类型
@@ -222,7 +223,7 @@ public class AudioPlayerDeviceModule extends BaseDeviceModule {
         public void onPrepared() {
             super.onPrepared();
             LogUtil.d(TAG, "onPrepared");
-            fireOnPrepared();
+            fireOnPrepared(AudioPlayerDeviceModule.this.url);
             fireOnDuration(mediaPlayer.getDuration());
         }
 
@@ -481,9 +482,9 @@ public class AudioPlayerDeviceModule extends BaseDeviceModule {
         }
     }
 
-    private void fireOnPrepared() {
+    private void fireOnPrepared(String url) {
         for (IMediaPlayer.IMediaPlayerListener listener : audioPlayerListeners) {
-            listener.onPrepared();
+            listener.onPrepared(url);
         }
     }
 

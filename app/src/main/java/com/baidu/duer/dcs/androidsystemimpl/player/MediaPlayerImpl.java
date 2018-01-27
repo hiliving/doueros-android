@@ -29,7 +29,6 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.baidu.duer.dcs.androidapp.DcsSampleApplication;
 import com.baidu.duer.dcs.systeminterface.IMediaPlayer;
 import com.baidu.duer.dcs.util.LogUtil;
 import com.baidu.duer.dcs.util.SystemServiceManager;

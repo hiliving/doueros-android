@@ -35,7 +35,6 @@ import com.baidu.duer.dcs.systeminterface.IMediaPlayer;
 import com.baidu.duer.dcs.util.CommonUtil;
 import com.baidu.duer.dcs.util.DateFormatterUtil;
 import com.baidu.duer.dcs.util.LogUtil;
-import com.baidu.duer.dcs.util.PreferenceUtil;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -444,8 +443,8 @@ public class AlertsDeviceModule extends BaseDeviceModule implements AlertHandler
 
     private IMediaPlayer.IMediaPlayerListener mediaPlayerListener = new IMediaPlayer.SimpleMediaPlayerListener() {
         @Override
-        public void onPrepared() {
-            super.onPrepared();
+        public void onPrepared(String url) {
+            super.onPrepared(url);
             mediaPlayer.setActive(true);
         }
 

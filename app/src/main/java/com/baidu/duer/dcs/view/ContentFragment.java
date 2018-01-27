@@ -15,21 +15,21 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.BoolRes;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
@@ -43,12 +43,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.duer.dcs.R;
-import com.baidu.duer.dcs.androidapp.DcsSampleMainActivity;
 import com.baidu.duer.dcs.androidapp.DcsSampleOAuthActivity;
 import com.baidu.duer.dcs.androidsystemimpl.PlatformFactoryImpl;
 import com.baidu.duer.dcs.androidsystemimpl.webview.BaseWebView;
 import com.baidu.duer.dcs.devicemodule.alerts.AlertsDeviceModule;
-import com.baidu.duer.dcs.devicemodule.alerts.OnAlertControl;
 import com.baidu.duer.dcs.devicemodule.screen.ScreenDeviceModule;
 import com.baidu.duer.dcs.devicemodule.screen.message.RenderVoiceInputTextPayload;
 import com.baidu.duer.dcs.devicemodule.voiceinput.VoiceInputDeviceModule;
@@ -63,18 +61,17 @@ import com.baidu.duer.dcs.systeminterface.IPlatformFactory;
 import com.baidu.duer.dcs.systeminterface.IWakeUp;
 import com.baidu.duer.dcs.util.BlurUtil;
 import com.baidu.duer.dcs.util.CommonUtil;
-import com.baidu.duer.dcs.util.FastBlur;
 import com.baidu.duer.dcs.util.LogUtil;
 import com.baidu.duer.dcs.util.NetWorkUtil;
 import com.baidu.duer.dcs.util.ShadeAnim;
 import com.baidu.duer.dcs.util.ShareUtil;
+import com.baidu.duer.dcs.view.Iview.IDView;
 import com.baidu.duer.dcs.view.Iview.OnChangePageListener;
 import com.baidu.duer.dcs.wakeup.WakeUp;
 import com.skyfishjy.library.RippleBackground;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.File;
@@ -86,7 +83,7 @@ import java.util.Date;
  * Created by Huangyong on 2018/1/14.
  */
 
-public class ContentFragment extends Fragment implements View.OnClickListener {
+public class ContentFragment extends Fragment implements View.OnClickListener, IDView {
     public static final String TAG = "DcsDemoActivity";
     private static final int MUSICINFO = 111;
     private static boolean ISRECORDING = false;
@@ -103,6 +100,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
     private long startTimeStopListen;
     private boolean isStopListenReceiving;
     private String mHtmlUrl;
+    public String urls;//歌曲地址
     // 唤醒
     private WakeUp wakeUp;
     private volatile float vol;
@@ -122,7 +120,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
             super.handleMessage(msg);
             switch (msg.what){
                 case MUSICINFO:
-                    String musicnames = msg.getData().getString("MUSICNAME");
+                    musicnames = msg.getData().getString("MUSICNAME");
                     musicname.setText(musicnames);
                     break;
             }
@@ -138,9 +136,10 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
     private ImageView stoppic;
     private ObjectAnimator nope;
     private ObjectAnimator tada;
-    private ImageView cImage;
-    private RelativeLayout cirImage;
     private RotateAnimation animation;
+    private ImageView downImg;
+    private DownPresenter downPresenter;
+    private String musicnames;
 
     @Nullable
     @Override
@@ -170,23 +169,20 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
       /*  Button openLogBtn = (Button) findViewById(R.id.openLogBtn);
         openLogBtn.setOnClickListener(this);*/
         voiceButton = (ImageView) view.findViewById(R.id.voiceBtn);
+        downImg = (ImageView) view.findViewById(R.id.down_img);
         content = (RippleBackground) view.findViewById(R.id.content);
-
+        downPresenter = new DownPresenter(getContext(),this);
         leftTime = (TextView) view.findViewById(R.id.leftTime);
         rightTime = (TextView) view.findViewById(R.id.rightTime);
         seekBar = (SeekBar) view.findViewById(R.id.seekBar);
         controlseek = (RelativeLayout) view.findViewById(R.id.controlSeek);
-        //中心view
-        cImage = (ImageView) view.findViewById(R.id.cImage);
-        cirImage = (RelativeLayout) view.findViewById(R.id.cirImage);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.cimage);
-        Bitmap roundedCornerBitmap = GetRoundedCornerBitmap(bitmap);
-        cImage.setImageBitmap(roundedCornerBitmap);
         seekBar.setMax(100);
         user = (Button) view.findViewById(R.id.user);
         share = (Button) view.findViewById(R.id.share);
         share.setOnClickListener(this);
         user.setOnClickListener(this);
+        downImg.setOnClickListener(this);
         voiceButton.setOnClickListener(this);
 
         // textViewTimeStopListen = (TextView) findViewById(R.id.id_tv_time_0);
@@ -259,6 +255,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
         Button mPreviousSongBtn = (Button) view.findViewById(R.id.previousSongBtn);
         alarmpop = (RippleBackground) view.findViewById(R.id.alarm);//闹钟动画
         stoppic = (ImageView) view.findViewById(R.id.alarmpic);//停止闹钟的按钮
+        //停止闹钟的按钮
         root = (RelativeLayout) view.findViewById(R.id.root);
         ripple = (RippleBackground) view.findViewById(R.id.contentbottom);
         pauseOrPlayButton = (Button) view.findViewById(R.id.pauseOrPlayBtn);
@@ -281,7 +278,6 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
         animation.setRepeatCount(-1);
         animation.setInterpolator(new LinearInterpolator()); // 设置插入器
         animation.setDuration(10000);
-        cImage.startAnimation(animation);
         animation.cancel();
     }
 
@@ -404,6 +400,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
         deviceModuleFactory.createAudioPlayerDeviceModule();
         deviceModuleFactory.getAudioPlayerDeviceModule().addAudioPlayListener(
                 new IMediaPlayer.SimpleMediaPlayerListener() {
+
                     @Override
                     public void onPaused() {
                         super.onPaused();
@@ -458,17 +455,20 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                         Date date = new Date(milliseconds);
                         String format = sdf.format(date);
                         rightTime.setText(format);
+
                     }
 
                     @Override
-                    public void onPrepared() {
-                        super.onPrepared();
+                    public void onPrepared(String url) {
+                        super.onPrepared(url);
+                        urls = url;
                         isEnablePlaying=true;
                         control.setVisibility(View.VISIBLE);
                         controlseek.setVisibility(View.VISIBLE);
                         if (webroot.isShown()){
                             webroot.setVisibility(View.INVISIBLE);
                         }
+                        Log.d("当前下载地址是：",urls);
                     }
 
                     @Override
@@ -613,18 +613,7 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                 doUserActivity();
                 break;
             case R.id.pauseOrPlayBtn:
-                if (isEnablePlaying){
-                    if (isPause) {
-                        pauseOrPlayButton.setBackgroundResource(R.drawable.pausebg);
-                        platformFactory.getPlayback().play(playPauseResponseListener);
-                    } else {
-                        pauseOrPlayButton.setBackgroundResource(R.drawable.playbg);
-                        platformFactory.getPlayback().pause(playPauseResponseListener);
-                    }
-                    doUserActivity();
-                }else {
-                    Toast.makeText(getContext(), "当前播放队列为空，请先说出你想听的歌曲", Toast.LENGTH_SHORT).show();
-                }
+                pauseButtonClick();
                 break;
             case R.id.user:
                 if (listener!=null){
@@ -645,8 +634,26 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
                 alarmpop.setVisibility(View.INVISIBLE);
                 deviceModuleFactory.getAlertsDeviceModule().stopActiveAlert();
                 break;
+            case R.id.down_img:
+                downPresenter.downLoadFile(urls,musicnames);
+                break;
             default:
                 break;
+        }
+    }
+
+    private void pauseButtonClick() {
+        if (isEnablePlaying){
+            if (isPause) {
+                pauseOrPlayButton.setBackgroundResource(R.drawable.pausebg);
+                platformFactory.getPlayback().play(playPauseResponseListener);
+            } else {
+                pauseOrPlayButton.setBackgroundResource(R.drawable.playbg);
+                platformFactory.getPlayback().pause(playPauseResponseListener);
+            }
+            doUserActivity();
+        }else {
+            Toast.makeText(getContext(), "当前播放队列为空，请先说出你想听的歌曲", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -734,5 +741,41 @@ public class ContentFragment extends Fragment implements View.OnClickListener {
     private OnChangePageListener listener;
     public void setOnChangePageListener(OnChangePageListener listener){
         this.listener = listener;
+    }
+
+    @Override
+    public void downSuccess(String path) {
+        Log.d("当前下载完成：",path);
+        Snackbar snackbar = Snackbar.make(root,path+"下载完成!",Toast.LENGTH_SHORT);
+        View mView = snackbar.getView();
+        mView.setBackgroundColor(getResources().getColor(R.color.alptha_snack));
+        snackbar.show();
+    }
+
+    @Override
+    public void downFail(String msg) {
+        Log.d("当前下载失败：",msg);
+        Snackbar snackbar = Snackbar.make(root,msg,Toast.LENGTH_SHORT);
+        View mView = snackbar.getView();
+        mView.setBackgroundColor(getResources().getColor(R.color.alptha_snack));
+        snackbar.show();
+    }
+
+    @Override
+    public void showprogress(long total, long current) {
+        Log.d("当前下载进度：","*****"+(int)(current*1.0f/total*100.0f));
+    }
+
+    @Override
+    public void flushName() {
+        Snackbar snackbar = Snackbar.make(root,"歌曲名未知，请按暂停键再按播放，以获取歌曲名",Toast.LENGTH_SHORT);
+        View mView = snackbar.getView();
+        mView.setBackgroundColor(getResources().getColor(R.color.alptha_snack));
+        snackbar.show();
+    }
+
+    @Override
+    public void startDownload() {
+
     }
 }

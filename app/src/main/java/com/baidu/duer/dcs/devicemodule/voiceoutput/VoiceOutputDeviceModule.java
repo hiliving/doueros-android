@@ -111,8 +111,8 @@ public class VoiceOutputDeviceModule extends BaseDeviceModule {
 
     private IMediaPlayer.IMediaPlayerListener mediaPlayerListener = new IMediaPlayer.SimpleMediaPlayerListener() {
         @Override
-        public void onPrepared() {
-            super.onPrepared();
+        public void onPrepared(String url) {
+            super.onPrepared(url);
             speechState = SpeechState.PLAYING;
             sendStartedEvent(lastSpeakToken);
             fireOnVoiceOutputStarted();

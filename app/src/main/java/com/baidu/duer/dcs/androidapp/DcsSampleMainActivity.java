@@ -28,15 +28,11 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -51,13 +47,8 @@ import com.baidu.duer.dcs.androidsystemimpl.webview.BaseWebView;
 import com.baidu.duer.dcs.devicemodule.screen.ScreenDeviceModule;
 import com.baidu.duer.dcs.devicemodule.screen.message.RenderVoiceInputTextPayload;
 import com.baidu.duer.dcs.devicemodule.voiceinput.VoiceInputDeviceModule;
-import com.baidu.duer.dcs.framework.BaseDeviceModule;
-import com.baidu.duer.dcs.framework.BaseMultiChannelMediaPlayer;
 import com.baidu.duer.dcs.framework.DcsFramework;
-import com.baidu.duer.dcs.framework.DcsResponseDispatcher;
 import com.baidu.duer.dcs.framework.DeviceModuleFactory;
-import com.baidu.duer.dcs.framework.DialogRequestIdHandler;
-import com.baidu.duer.dcs.framework.IMessageSender;
 import com.baidu.duer.dcs.framework.IResponseListener;
 import com.baidu.duer.dcs.http.HttpConfig;
 import com.baidu.duer.dcs.oauth.api.IOauth;
@@ -65,7 +56,6 @@ import com.baidu.duer.dcs.oauth.api.OauthImpl;
 import com.baidu.duer.dcs.systeminterface.IMediaPlayer;
 import com.baidu.duer.dcs.systeminterface.IPlatformFactory;
 import com.baidu.duer.dcs.systeminterface.IWakeUp;
-import com.baidu.duer.dcs.util.BlurUtil;
 import com.baidu.duer.dcs.util.CommonUtil;
 import com.baidu.duer.dcs.util.FastBlur;
 import com.baidu.duer.dcs.util.LogUtil;
@@ -74,9 +64,6 @@ import com.baidu.duer.dcs.wakeup.WakeUp;
 import com.skyfishjy.library.RippleBackground;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * 主界面 activity
@@ -292,8 +279,8 @@ public class DcsSampleMainActivity extends Activity implements View.OnClickListe
                     }
 
                     @Override
-                    public void onPrepared() {
-                        super.onPrepared();
+                    public void onPrepared(String url) {
+                        super.onPrepared(url);
                         isEnablePlaying=true;
                         control.setVisibility(View.VISIBLE);
                     }

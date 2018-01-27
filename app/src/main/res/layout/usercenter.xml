@@ -7,11 +7,18 @@
     android:layout_height="match_parent">
     <TextView
         android:layout_width="wrap_content"
-        android:text="下载列表"
-        android:layout_margin="30dp"
+        android:text="本地下载目录:"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="16sp"
         android:textColor="#fff"
-        android:layout_height="80dp" />
+        android:layout_height="wrap_content" />
    <android.support.v7.widget.RecyclerView
+       android:id="@+id/rvlist"
+       android:layout_marginTop="60dp"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
+       android:layout_marginBottom="20dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
 
